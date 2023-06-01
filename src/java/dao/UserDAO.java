@@ -26,7 +26,7 @@ public class UserDAO extends DBContext {
 
     public User getUser(String input_email, String input_password) throws Exception {
         User user = null;
-        String query = "SELECT * FROM dbo.[User] WHERE [email] = ? and [password] = ?";
+        String query = "SELECT * FROM user WHERE email = ? AND password = ?;";
         try {
             con = getConnection();
             ps = con.prepareStatement(query);
@@ -56,11 +56,40 @@ public class UserDAO extends DBContext {
 
     public User getUserByEmail(String input_email) throws Exception {
         User user = null;
-        String query = "SELECT * FROM dbo.[User] WHERE [email] = ?";
+        String query = "SELECT * FROM user WHERE email = ?";
         try {
             con = getConnection();
             ps = con.prepareStatement(query);
             ps.setString(1, input_email);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int user_id = rs.getInt("user_id");
+                String full_name = rs.getString("full_name");
+                String phone_number = rs.getString("phone_number");
+                String avatar_link = rs.getString("avatar_link");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                String address = rs.getString("address");
+                int role = rs.getInt("role_id");
+                user = new User(user_id, full_name, phone_number, avatar_link, email, password, address, role);
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            closeResultSet(rs);
+            closePreparedStatement(ps);
+            closeConnection(con);
+        }
+        return user;
+    }
+    
+    public User getUserByID(int input_id) throws Exception {
+        User user = null;
+        String query = "SELECT * FROM user WHERE user_id = ?";
+        try {
+            con = getConnection();
+            ps = con.prepareStatement(query);
+            ps.setInt(1, input_id);
             rs = ps.executeQuery();
             while (rs.next()) {
                 int user_id = rs.getInt("user_id");
@@ -87,7 +116,7 @@ public class UserDAO extends DBContext {
         int status = 0;
         try {
             con = getConnection();
-            ps = con.prepareStatement("insert into dbo.[User] (full_name, email, password, role_id) values (?,?,?,?)");
+            ps = con.prepareStatement("insert into user (full_name, email, password, role_id) values (?,?,?,?)");
             ps.setString(1, a.getFull_name());
             ps.setString(2, a.getEmail());
             ps.setString(3, a.getPassword());
@@ -107,7 +136,7 @@ public class UserDAO extends DBContext {
         int status = 0;
         try {
             con = getConnection();
-            ps = con.prepareStatement("update dbo.[User] set password = ? where email = ?");
+            ps = con.prepareStatement("update user set password = ? where email = ?");
             ps.setString(1, new_password);
             ps.setString(2, email);
             status = ps.executeUpdate();
@@ -125,7 +154,7 @@ public class UserDAO extends DBContext {
         int status = 0;
         try {
             con = getConnection();
-            ps = con.prepareStatement("insert into dbo.[Delete_Request] (reason, email, user_id) values (?,?,?)");
+            ps = con.prepareStatement("insert into delete_request (reason, email, user_id) values (?,?,?)");
             ps.setString(1, a.getReason());
             ps.setString(2, a.getEmail());
             ps.setInt(3, a.getUser_id());
@@ -142,7 +171,7 @@ public class UserDAO extends DBContext {
 
     public List<User> getListUser() throws Exception {
         try {
-            String sql = "SELECT * FROM dbo.[User]";
+            String sql = "SELECT * FROM user";
             con = getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -171,7 +200,7 @@ public class UserDAO extends DBContext {
     
     public List<Delete_Request> getListDeleteRequest() throws Exception {
         try {
-            String sql = "SELECT * FROM dbo.[Delete_Request]";
+            String sql = "SELECT * FROM delete_request";
             con = getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -194,5 +223,27 @@ public class UserDAO extends DBContext {
         }
     }
     
-    
+    public int updateUser(User user) throws Exception {
+        int status = 0;
+        try {
+            con = getConnection();
+            ps = con.prepareStatement("UPDATE user SET full_name = ?, phone_number = ?, avatar_link = ?, email = ?, password = ?, role_id = ?, address = ? WHERE user_id = ?;");
+            ps.setString(1, user.getFull_name());            
+            ps.setString(2, user.getPhone_number());            
+            ps.setString(3, user.getAvatar_link());            
+            ps.setString(4, user.getEmail());            
+            ps.setString(5, user.getPassword());            
+            ps.setInt(6, user.getRole());            
+            ps.setString(7, user.getAddress());            
+            ps.setInt(8, user.getUser_id());            
+            status = ps.executeUpdate();
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            closeResultSet(rs);
+            closePreparedStatement(ps);
+            closeConnection(con);
+        }
+        return status;
+    }
 }

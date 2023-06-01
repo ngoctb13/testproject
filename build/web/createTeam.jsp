@@ -60,23 +60,23 @@
                             <form action="team">
                                 <div class="form-group">
                                     <label for="team_name" class="form-label">Team Name</label>
-                                    <input type="text" name="team_name" class="form-control" placeholder="Enter your team name">
+                                    <input type="text" name="team_name" class="form-control" placeholder="Enter your team name" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="text" name="email" class="form-control" placeholder="Enter your team email">
+                                    <input type="text" name="email" class="form-control" placeholder="Enter your team email" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="address" class="form-label">Address</label>
-                                    <input type="text" name="address" class="form-control" placeholder="Enter your team address">
+                                    <input type="text" name="address" class="form-control" placeholder="Enter your team address" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="phone_number" class="form-label">Phone number</label>
-                                    <input type="text" name="phone_number" class="form-control" placeholder="Enter your team phone number">
+                                    <input type="text" name="phone_number" class="form-control" placeholder="Enter your team phone number" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="description" class="form-label">Description</label>
-                                    <input type="text" name="description" class="form-control" placeholder="Enter your team description">
+                                    <input type="text" name="description" class="form-control" placeholder="Enter your team description" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-primary py-3 px-5">

@@ -25,7 +25,7 @@ public class RoleDAO extends DBContext{
     
     public List<Role> getRole() throws SQLException, Exception {
         List<Role> list = new ArrayList<>();
-        String query = "SELECT * FROM dbo.[Role];";
+        String query = "SELECT * FROM role;";
         try {
             con = getConnection();
             ps = con.prepareStatement(query);
