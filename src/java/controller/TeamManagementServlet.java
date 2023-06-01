@@ -7,6 +7,8 @@ package controller;
 import dao.TeamDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -46,14 +48,14 @@ public class TeamManagementServlet extends HttpServlet {
             String phone_number = request.getParameter("phone_number");
             String description = request.getParameter("description");
             int coach = user.getUser_id();
-            
+
             Team team = new Team(name, phone_number, email, address, description, coach);
-            
+
             int add = dao.addTeam(team);
-            
+
             if (add > 0) {
                 request.setAttribute("your_team", team);
-                request.getRequestDispatcher("teamProfile.jsp").forward(request, response);
+                request.getRequestDispatcher("manage/team.jsp").forward(request, response);
             }
         } else {
             response.sendRedirect("login.jsp");

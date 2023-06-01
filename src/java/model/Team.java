@@ -40,6 +40,23 @@ public class Team {
         this.description = description;
         this.coach = coach;
     }
+
+    public Team(String team_name, String phone_number, String email, String address, String description) {
+        this.team_name = team_name;
+        this.phone_number = phone_number;
+        this.email = email;
+        this.address = address;
+        this.description = description;
+    }
+
+    public Team(int team_id, String team_name, String phone_number, String email, String address, String description) {
+        this.team_id = team_id;
+        this.team_name = team_name;
+        this.phone_number = phone_number;
+        this.email = email;
+        this.address = address;
+        this.description = description;
+    }
     
     
 

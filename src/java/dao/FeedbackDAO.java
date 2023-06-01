@@ -25,7 +25,7 @@ public class FeedbackDAO extends DBContext{
         int status = 0;
         try {
             con = getConnection();
-            ps = con.prepareStatement("insert into dbo.[Feedback] (full_name, email, subject, detail, user_id) values (?, ?, ?, ?, ?)");
+            ps = con.prepareStatement("insert into feedback (full_name, email, subject, detail, user_id) values (?, ?, ?, ?, ?)");
             ps.setString(1, f.getFull_name());
             ps.setString(2, f.getEmail());
             ps.setString(3, f.getSubject());
@@ -44,7 +44,7 @@ public class FeedbackDAO extends DBContext{
     
     public List<Feedback> getListFeedback() throws Exception {
         try {
-            String sql = "SELECT * FROM dbo.[Feedback]";
+            String sql = "SELECT * FROM feedback";
             con = getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -74,7 +74,7 @@ public class FeedbackDAO extends DBContext{
         int status = 0;
         try {
             con = getConnection();
-            ps = con.prepareStatement("delete from dbo.Feedback where feedback_id = ?");
+            ps = con.prepareStatement("delete from feedback where feedback_id = ?");
             ps.setInt(1, feedback_id);
             status = ps.executeUpdate();
         } catch (Exception e) {

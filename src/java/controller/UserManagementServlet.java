@@ -63,23 +63,20 @@ public class UserManagementServlet extends HttpServlet {
                 request.setAttribute("user", user);
                 request.getRequestDispatcher("admin/userdetail.jsp").forward(request, response);
             }
+
             
-            if (action.equals("update_user")) {
-                int id = Integer.parseInt(request.getParameter("id"));
-                
-            }
 
             if (action.equals("feedback")) {
                 List<Feedback> fbList = fbDAO.getListFeedback();
                 request.setAttribute("fbList", fbList);
                 request.getRequestDispatcher("admin/feedback.jsp").forward(request, response);
             }
-            
+
             if (action.equals("delete_feedback")) {
                 int feedback_id = Integer.parseInt(request.getParameter("id"));
-                int n = fbDAO.deleteFeedback(feedback_id);               
+                int n = fbDAO.deleteFeedback(feedback_id);
                 List<Feedback> fbList = fbDAO.getListFeedback();
-                
+
                 request.setAttribute("fbList", fbList);
                 request.getRequestDispatcher("admin/feedback.jsp").forward(request, response);
             }

@@ -51,24 +51,30 @@
                                     <div class="card-header"></div>
                                     <div class="card-body">
                                         <h5 class="card-title"></h5>
-                                        <form action="user?action=update_user&id=${user.user_id}" class="needs-validation" novalidate accept-charset="utf-8">
+                                        <form action="updateUser" class="needs-validation" novalidate accept-charset="utf-8">
+                                            <div class="mb-3">
+                                                <label for="address" class="form-label">User ID</label>
+                                                <input id="user_id" name="id" type="text" class="form-control" value="${user.user_id}" readonly="">
+                                                <div class="valid-feedback">Looks good!</div>
+                                                <div class="invalid-feedback">Please enter your name.</div>
+                                            </div>
                                             <div class="mb-3">
                                                 <label for="address" class="form-label">Full Name</label>
-                                                <input id="full_name" name="full_name" type="text" class="form-control" value="${user.full_name}">
+                                                <input id="full_name" name="full_name" type="text" class="form-control" value="${user.full_name}" required="">
                                                 <div class="valid-feedback">Looks good!</div>
                                                 <div class="invalid-feedback">Please enter your name.</div>
                                             </div>
                                             <div class="row g-2">
                                                 <div class="mb-3 col-md-6">
                                                     <label for="email" class="form-label">Email</label>
-                                                    <input readonly="readonly" id="email" name="email" type="text" class="form-control" value="${user.email}">
+                                                    <input readonly="readonly" id="email" name="email" type="text" class="form-control" value="${user.email}" readonly="">
                                                     <small class="form-text text-muted">Enter a valid email address.</small>
                                                     <div class="valid-feedback">Looks good!</div>
                                                     <div class="invalid-feedback">Please enter your email address.</div>
                                                 </div>
                                                 <div class="mb-3 col-md-6">
                                                     <label for="password" class="form-label">Password</label>
-                                                    <input id="password" name="password" type="text" class="form-control" value="${user.password}">
+                                                    <input id="password" name="password" type="text" class="form-control" value="${user.password}" required="">
                                                     <small class="form-text text-muted">Your password must be 8-20 characters long, contain letters and numbers only.</small>
                                                     <div class="valid-feedback">Looks good!</div>
                                                     <div class="invalid-feedback">Please enter your password.</div>
@@ -76,19 +82,19 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="address" class="form-label">Phone Number</label>
-                                                <input id="phone_number" name="phone_number" type="text" class="form-control" value="${user.phone_number}">
+                                                <input id="phone_number" name="phone_number" type="text" class="form-control" value="${user.phone_number}" required="">
                                                 <div class="valid-feedback">Looks good!</div>
                                                 <div class="invalid-feedback">Please enter your phone number.</div>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="address" class="form-label">Address</label>
-                                                <input id="address" name="address" type="text" class="form-control" value="${user.address}">
+                                                <input id="address" name="address" type="text" class="form-control" value="${user.address}" required="">
                                                 <div class="valid-feedback">Looks good!</div>
                                                 <div class="invalid-feedback">Please enter your address.</div>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="address" class="form-label">Avatar Link</label>
-                                                <input id="avatar_link" name="avatar_link" type="text" class="form-control" value="${user.avatar_link}">
+                                                <input id="avatar_link" name="avatar_link" type="text" class="form-control" value="${user.avatar_link}" required="">
                                                 <div class="valid-feedback">Looks good!</div>
                                                 <div class="invalid-feedback">Please enter your avatar link.</div>
                                             </div>

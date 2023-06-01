@@ -31,8 +31,8 @@
         <link rel="stylesheet" href="css/aos.css">
 
         <link rel="stylesheet" href="css/style.css"
-    </head>
-        
+              </head>
+
     <body>
         <div class="site-wrap">
 
@@ -60,23 +60,44 @@
                                 <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                                     <c:if test="${sessionScope.user != null}">                                       
                                         <li class="active"><a href="home.jsp" class="nav-link">Home</a></li>
-                                        <li><a href="tournament.jsp" class="nav-link">Tournament</a></li>
+                                        <li><a href="manage/team.jsp" class="nav-link">Tournament</a></li>
                                         <li><a href="team.jsp" class="nav-link">Team</a></li>
-                                        <li><a href="teamProfile.jsp" class="nav-link">Blog</a></li>
+                                        <li><a href="blog.jsp" class="nav-link">Blog</a></li>
                                         <li><a href="contact.jsp" class="nav-link">Contact</a></li>                           
                                         <a href="#" data-toggle="dropdown" role="button" class="nav-link dropdown-toggle">
                                             ${sessionScope.user.full_name}
                                         </a>
-                                        <ul role="menu" class="dropdown-menu py-3 px-4 mr-3">
-                                            <li><a href="dashboard?action=default"><span class="edu-icon edu-home-admin author-log-ic"></span>Dashboard</a>
-                                            </li>
-                                            <li><a href="profile.jsp"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
-                                            </li>
-                                            <li><a href="#"><span class="edu-icon edu-money author-log-ic"></span>Change Password</a>
-                                            </li>                                      
-                                            <li><a href="logout"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
-                                            </li>
-                                        </ul>
+                                        <c:if test="${sessionScope.user.role == 2}">
+                                            <ul role="menu" class="dropdown-menu py-3 px-4 mr-3">                                                
+                                                <li><a href="profile.jsp"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
+                                                </li>
+                                                <li><a href="profile.jsp"><span class="edu-icon edu-user-rounded author-log-ic"></span>Manage Your Tour</a>
+                                                </li>
+                                                <li><a href="teamList"><span class="edu-icon edu-user-rounded author-log-ic"></span>Manage Your Team</a>
+                                                </li>
+                                                <li><a href="#"><span class="edu-icon edu-money author-log-ic"></span>Change Password</a>
+                                                </li>                                      
+                                                <li><a href="logout"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
+                                                </li>
+                                            </ul>
+                                        </c:if>
+                                        <c:if test="${sessionScope.user.role == 1}">
+                                            <ul role="menu" class="dropdown-menu py-3 px-4 mr-3">
+                                                <li><a href="dashboard?action=default"><span class="edu-icon edu-home-admin author-log-ic"></span>Dashboard</a>
+                                                </li>
+                                                <li><a href="profile.jsp"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
+                                                </li>
+                                                <li><a href="profile.jsp"><span class="edu-icon edu-user-rounded author-log-ic"></span>Manage Your Tour</a>
+                                                </li>
+                                                <li><a href="teamList"><span class="edu-icon edu-user-rounded author-log-ic"></span>Manage Your Team</a>
+                                                </li>
+                                                <li><a href="#"><span class="edu-icon edu-money author-log-ic"></span>Change Password</a>
+                                                </li>                                      
+                                                <li><a href="logout"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
+                                                </li>
+                                            </ul>
+                                        </c:if>
+                                        
                                     </c:if>
                                     <c:if test="${sessionScope.user == null}">
                                         <li class="active"><a href="home.jsp" class="nav-link">Home</a></li>

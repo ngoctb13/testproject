@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav id="sidebar" class="active">
     <div class="sidebar-header">
-        <img src="assets/img/bootstraper-logo.png" alt="bootraper logo" class="app-logo">
+        <img src="images/SOCCER.png" alt="bootraper logo" class="app-logo">
     </div>
     <ul class="list-unstyled components text-secondary">
         
@@ -31,7 +31,7 @@
 
         
         <li>    
-            <a href="settings.html"><i class="fas fa-cog"></i>Settings</a>
+            <a href="#"><i class="fas fa-cog"></i>Settings</a>
         </li>
     </ul>
 </nav>
