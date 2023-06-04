@@ -60,6 +60,14 @@
         <servlet-name>AdminUpdateUserServlet</servlet-name>
         <servlet-class>controller.AdminUpdateUserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserUpdateServlet</servlet-name>
+        <servlet-class>controller.UserUpdateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminDeleteAccount</servlet-name>
+        <servlet-class>controller.AdminDeleteAccount</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -119,6 +127,14 @@
     <servlet-mapping>
         <servlet-name>AdminUpdateUserServlet</servlet-name>
         <url-pattern>/updateUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserUpdateServlet</servlet-name>
+        <url-pattern>/userUpdate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDeleteAccount</servlet-name>
+        <url-pattern>/adminDeleteAccount</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

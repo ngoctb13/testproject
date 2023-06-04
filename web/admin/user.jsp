@@ -80,34 +80,38 @@
                                                 </c:if>
                                                 <td class="text-end">
                                                     <a href="user?action=detail&email=${a.email}" class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></a>
-                                                    <a href="#" type="button" class="btn btn-outline-danger btn-rounded" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-trash"></i></a>
+                                                    <a href="#" class="btn btn-outline-danger btn-rounded" data-bs-toggle="modal" data-bs-target="#deleteUser${a.user_id}"><i class="fas fa-trash"></i></a>
                                                 </td>
-                                            </tr>
-                                            
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>Do you want to delete this ${a.email} account?</p>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </c:forEach>                                    
+                                            </tr>                                                                                   
+                                        </c:forEach>                                    
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                        <c:forEach items="${userList}" var="a">
+                            <div class="modal fade" id="deleteUser${a.user_id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Do you want to delete this ${a.email} account?</p>
+                                        </div>
+                                        <div class="modal-footer">                                            
+                                            <form action="adminDeleteAccount?user_id=${a.user_id}">
+                                                <input type="submit" value="Save Change" />
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+
+
                     </div>
                 </div>
             </div>
