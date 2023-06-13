@@ -30,7 +30,7 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="login-wrap p-0">
                             <h3 class="mb-4 text-center">Create your account</h3>
-                            <form action="register" method="POST" class="signin-form">
+                            <form id="form" action="register" method="POST" class="signin-form" onsubmit="return emailValidate()">
                                 <div style="text-align:center">
                                     <span id='message'></span>
                                 </div>
@@ -38,18 +38,24 @@
                                     <input type="text" name="your_name" id="your_name" class="form-control" placeholder="Enter your name" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="user_email" id="user_email" class="form-control" placeholder="Enter your email" required>
+                                    <input type="text" name="user_email" id="user_email" class="form-control" placeholder="Enter your email" required onkeyup="emailValidate()">
+                                    <div style="text-align:center">
+                                        <span id="email-erorr"></span>
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <input id="password" name="password" type="password" class="form-control" placeholder="Enter your password" required onkeyup='check();'>
+                                    <input id="password" name="password" type="password" class="form-control" placeholder="Enter your password" required onkeyup="check(), validatePassword()">
                                     <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                    <div style="text-align:center">
+                                        <span id="password-erorr"></span>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <input id="confirm-password" type="password" class="form-control" placeholder="Confirm password" required onkeyup='check();'>
                                     <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 </div>                                                               
                                 <div class="form-group">
-                                    <button type="submit" onclick="return check();" class="form-control btn btn-primary submit px-3">Sign Up</button>
+                                    <button type="submit" onclick="return (check() && emailValidate() && validatePassword());;" class="form-control btn btn-primary submit px-3">Sign Up</button>
                                 </div>
                             </form>
                             <p class="w-100 text-center">&mdash; Have an account? &mdash;</p>
@@ -61,7 +67,7 @@
                 </div>
             </div>
         </section>
-        <script>
+        <script type="text/javascript">           
             var check = function () {
                 if (document.getElementById('password').value ===
                         document.getElementById('confirm-password').value) {
@@ -74,6 +80,38 @@
                     return false;
                 }
             };
+
+            function emailValidate() {
+                var email = document.getElementById("user_email");
+                var text = document.getElementById("email-erorr");
+                var pattern = /^\S+@\S+\.\S+$/;
+
+
+                if (!email.value.match(pattern)) {
+                    text.innerHTML = "Please enter a valid email!";
+                    text.style.color = "#ff0000";
+                    return false;
+                } else {
+                    text.innerHTML = "";
+                    return true;
+                }
+                if (email.value === "") {
+                    text.innerHTML = "";
+                }
+            }
+
+            function validatePassword() {
+                var password = document.getElementById("password").value;
+                var text = document.getElementById("password-erorr");
+                if (password.length > 20) {
+                    text.innerHTML = "Password should not exceed 20 characters.";
+                    text.style.color = "#ff0000";
+                    return false;
+                } else {
+                    text.innerHTML = "";
+                    return true;
+                }
+            }
         </script>
         <script src="js/jquery1.min.js"></script>
         <script src="js/popper1.js"></script>

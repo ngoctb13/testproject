@@ -68,6 +68,10 @@
         <servlet-name>AdminDeleteAccount</servlet-name>
         <servlet-class>controller.AdminDeleteAccount</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>controller.ChangePasswordServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>AdminDeleteAccount</servlet-name>
         <url-pattern>/adminDeleteAccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <url-pattern>/changePassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
