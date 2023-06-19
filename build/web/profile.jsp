@@ -176,16 +176,15 @@
             function validateName() {
                 var full_name = document.getElementById("full_name").value;
                 var text = document.getElementById("name-erorr");
-                if (full_name.length > 50) {
-                    text.innerHTML = "Full name should not exceed 50 characters.";
+                if (full_name.length > 50 || !full_name.match(/^[a-zA-Z\s]+$/)) {
+                    text.innerHTML = "Full name must be alphanumeric character and should not exceed 50 characters.";
                     text.style.color = "#ff0000";
                     return false;
                 } else {
                     text.innerHTML = "";
                     return true;
                 }
-            }
-            function validatePhoneNumber() {
+            }nction validatePhoneNumber() {
                 var phone_number = document.getElementById("phone_number").value;
                 var text = document.getElementById("phone-erorr");
                 
