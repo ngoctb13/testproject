@@ -40,7 +40,16 @@ public class UserUpdateServlet extends HttpServlet {
         String phone_number = request.getParameter("phone_number");
         String address = request.getParameter("address");
         String avatar_link = request.getParameter("avatar_link");
-
+        if (full_name.length() >= 50 || !full_name.matches("[a-zA-Z\\s]+")) {
+            request.setAttribute("status", "FAILED");
+            request.getRequestDispatcher("profile.jsp").forward(request, response);
+            return;
+        }
+        if (phone_number.length() != 10 || !phone_number.matches("\\d+")) {
+            request.setAttribute("status", "FAILED");
+            request.getRequestDispatcher("profile.jsp").forward(request, response);
+            return;
+        }
         UserDAO dao = new UserDAO();
 
         User user = new User(full_name, phone_number, avatar_link, email, address);
@@ -51,7 +60,7 @@ public class UserUpdateServlet extends HttpServlet {
             User update_session = dao.getUserByEmail(email);
             session.setAttribute("user", update_session);
             session.setMaxInactiveInterval(1800);
-            
+
             request.setAttribute("status", "SUCCESS");
             request.getRequestDispatcher("profile.jsp").forward(request, response);
         } else {
