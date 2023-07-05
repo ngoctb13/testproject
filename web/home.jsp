@@ -36,6 +36,7 @@
 
 
               </head>
+         <% User user = (User) session.getAttribute("user"); %>
 
     <body>
         <jsp:include page="header.jsp"></jsp:include>
